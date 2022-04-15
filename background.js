@@ -7,9 +7,6 @@ chrome.runtime.onInstalled.addListener(function() {
 })
 
 chrome.contextMenus.onClicked.addListener(function(item, tab) {
-  let url = 'https://cn.bing.com/dict/search?q=' + item.selectionText;
+  let url = 'https://cn.bing.com/dict/search?q=' + encodeURIComponent(item.selectionText);
   chrome.tabs.create({url: url, index: tab.index + 1});
 });
-
-
-
